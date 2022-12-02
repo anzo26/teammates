@@ -1,2 +1,2 @@
 # Teammates
-Projekt Teammates - RIS
+Projekt Teammates-RIS

@@ -28,6 +28,11 @@ public class UporabnikController {
         return uporabnikDao.findById(id);
     }
 
+    @GetMapping("/ime/{ime}/priimek/{priimek}")
+    public Iterable<Uporabnik> vrniPoImenuInPriimku(@PathVariable(name = "ime") String ime, @PathVariable(name = "priimek") String priimek){
+        return uporabnikDao.vrniPoImenuInPriimku(ime, priimek);
+    }
+
     @PostMapping
     public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik){
         return uporabnikDao.save(uporabnik);
@@ -38,7 +43,7 @@ public class UporabnikController {
         uporabnikDao.deleteById(id);
     }
 
-    @PutMapping("/dodajLokacijo/{id}/") //dodajanje lokacije
+    @PutMapping("/dodajLokacijo/{id}/") //dodajanje lokacije ne dela zaenkrat
     public Uporabnik dodajLokacijo(@PathVariable(name = "id") Long id, @RequestBody Lokacija lokacija){
         Uporabnik posodobljenUporabnik = uporabnikDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Uporabnik ne obstaja z id: " + id));
 
@@ -46,4 +51,7 @@ public class UporabnikController {
 
         return  uporabnikDao.save(posodobljenUporabnik);
     }
+
+
+
 }

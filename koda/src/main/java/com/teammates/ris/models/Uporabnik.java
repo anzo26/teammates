@@ -25,8 +25,6 @@ public class Uporabnik {
 	}
 
 
-
-
 	private boolean admin = false;
 	private String ime;
 	private String priimek;
@@ -36,13 +34,22 @@ public class Uporabnik {
 	private String priljubljeni_sporti;
 
 
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_lokacija")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	Lokacija lokacija;
 
+	public Lokacija getLokacija() {
+		return lokacija;
+	}
+
+	public void setLokacija(Lokacija lokacija) {
+		this.lokacija = lokacija;
+	}
+
+	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	Collection<Komentar> komentarji;
 
 
 	public boolean isAdmin() {
@@ -100,5 +107,7 @@ public class Uporabnik {
 	public void setPriljubljeni_sporti(String priljubljeni_sporti) {
 		this.priljubljeni_sporti = priljubljeni_sporti;
 	}
+
+
 
 }

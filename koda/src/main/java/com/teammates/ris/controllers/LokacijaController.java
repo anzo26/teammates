@@ -2,6 +2,7 @@ package com.teammates.ris.controllers;
 
 
 import com.teammates.ris.dao.LokacijaRepository;
+import com.teammates.ris.exceptions.ResourceNotFoundException;
 import com.teammates.ris.models.Lokacija;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,14 @@ public class LokacijaController {
         lokacijaDao.deleteById(id);
     }
 
+    @PutMapping("/{id}") //spreminjanje lokacije
+    public Lokacija spremeniLokacijo(@PathVariable(name = "id") Long id, @RequestBody Lokacija lokacija){
+        Lokacija posodobljenaLokacija = lokacijaDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lokacija ne obstaja z id: " + id));
 
+        posodobljenaLokacija.setRegija(lokacija.getRegija());
+        posodobljenaLokacija.setNaslov(lokacija.getNaslov());
+
+        return  lokacijaDao.save(posodobljenaLokacija);
+    }
 
 }

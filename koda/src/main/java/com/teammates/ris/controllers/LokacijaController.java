@@ -26,6 +26,11 @@ public class LokacijaController {
         return lokacijaDao.findById(id);
     }
 
+    @GetMapping("/posta/{posta}/regija/{regija}")
+    public Iterable<Lokacija> vrniPoPostiInRegiji(@PathVariable(name = "posta") int posta, @PathVariable(name = "regija") String regija){
+        return lokacijaDao.vrniPoPostiInRegiji(posta, regija);
+    }
+
     @PostMapping
     public Lokacija dodajLokacijo(@RequestBody Lokacija lokacija){
         return lokacijaDao.save(lokacija);
@@ -35,7 +40,7 @@ public class LokacijaController {
     public void izbrisiLokacijo(@PathVariable(name = "id") Long id){
         lokacijaDao.deleteById(id);
     }
-    
+
     @PutMapping("/{id}") //spreminjanje lokacije
     public Lokacija spremeniLokacijo(@PathVariable(name = "id") Long id, @RequestBody Lokacija lokacija){
         Lokacija posodobljenaLokacija = lokacijaDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lokacija ne obstaja z id: " + id));

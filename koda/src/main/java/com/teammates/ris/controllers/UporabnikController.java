@@ -23,6 +23,8 @@ public class UporabnikController {
         return uporabnikDao.findAll();
     }
 
+
+    
     @GetMapping("/{id}")
     public Optional<Uporabnik> vrniUporabnika(@PathVariable(name = "id") Long id){
         return uporabnikDao.findById(id);
@@ -53,7 +55,7 @@ public class UporabnikController {
     }
 
 
-    
+
 
 
 }

@@ -33,6 +33,7 @@ public class UporabnikController {
         return uporabnikDao.vrniPoImenuInPriimku(ime, priimek);
     }
 
+    
     @PostMapping
     public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik){
         return uporabnikDao.save(uporabnik);

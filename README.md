@@ -1,2 +1,2 @@
 # Teammates
-Projekt Teammates-RIS 2022
+Projekt Teammates-RIS

@@ -2,7 +2,6 @@ package com.teammates.ris.models;
 
 
 import jakarta.persistence.*;
-
 import java.util.Collection;
 
 @Entity
@@ -13,6 +12,7 @@ public class Lokacija {
 
 	private String regija;
 	private String naslov;
+	private int posta;
 
 
 	@OneToMany(mappedBy = "lokacija", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
@@ -41,4 +41,8 @@ public class Lokacija {
 	public void setNaslov(String naslov) {
 		this.naslov = naslov;
 	}
+
+	public int getPosta() { return posta; }
+
+	public void setPosta(int posta) { this.posta = posta; }
 }

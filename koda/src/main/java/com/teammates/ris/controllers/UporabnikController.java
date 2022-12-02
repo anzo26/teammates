@@ -33,7 +33,13 @@ public class UporabnikController {
         return uporabnikDao.vrniPoImenuInPriimku(ime, priimek);
     }
 
-    
+    @GetMapping("/ime/{ime}/priimek/{priimek}/email/{email}")
+    public Iterable<Uporabnik> vrniPoImenuInPriimkuInEmailu(@PathVariable(name = "ime") String ime, @PathVariable(name = "priimek") String priimek, @PathVariable(name = "email") String email){
+        return uporabnikDao.vrniPoImenuInPriimkuInEmailu(ime, priimek, email);
+    }
+
+    //naredi se eno poizvedbo s tremi parametri enako kot zgornja
+
     @PostMapping
     public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik){
         return uporabnikDao.save(uporabnik);

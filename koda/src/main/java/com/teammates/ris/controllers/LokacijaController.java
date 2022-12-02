@@ -47,6 +47,7 @@ public class LokacijaController {
 
         posodobljenaLokacija.setRegija(lokacija.getRegija());
         posodobljenaLokacija.setNaslov(lokacija.getNaslov());
+        posodobljenaLokacija.setPosta(lokacija.getPosta());
 
         return  lokacijaDao.save(posodobljenaLokacija);
     }

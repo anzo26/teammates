@@ -51,9 +51,7 @@ public class UporabnikController {
 
         return  uporabnikDao.save(posodobljenUporabnik);
     }
-
-
-
+    
 
 
 

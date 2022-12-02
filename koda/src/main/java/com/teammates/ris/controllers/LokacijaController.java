@@ -30,7 +30,7 @@ public class LokacijaController {
     public Lokacija dodajLokacijo(@RequestBody Lokacija lokacija){
         return lokacijaDao.save(lokacija);
     }
-
+    
     @DeleteMapping("/{id}")
     public void izbrisiLokacijo(@PathVariable(name = "id") Long id){
         lokacijaDao.deleteById(id);

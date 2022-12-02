@@ -30,12 +30,12 @@ public class LokacijaController {
     public Lokacija dodajLokacijo(@RequestBody Lokacija lokacija){
         return lokacijaDao.save(lokacija);
     }
-    
+
     @DeleteMapping("/{id}")
     public void izbrisiLokacijo(@PathVariable(name = "id") Long id){
         lokacijaDao.deleteById(id);
     }
-
+    
     @PutMapping("/{id}") //spreminjanje lokacije
     public Lokacija spremeniLokacijo(@PathVariable(name = "id") Long id, @RequestBody Lokacija lokacija){
         Lokacija posodobljenaLokacija = lokacijaDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lokacija ne obstaja z id: " + id));

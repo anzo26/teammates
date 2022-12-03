@@ -39,7 +39,7 @@ public class Uporabnik {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	Lokacija lokacija;
-	
+
 
 	public Lokacija getLokacija() {
 		return lokacija;

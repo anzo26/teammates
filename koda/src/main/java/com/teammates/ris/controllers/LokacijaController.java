@@ -31,6 +31,11 @@ public class LokacijaController {
         return lokacijaDao.vrniPoPostiInRegiji(posta, regija);
     }
 
+    @GetMapping("/posta/{posta}/regija/{regija}/naslov/{naslov}")
+    public Iterable<Lokacija> vrniPoPostiInRegijiInNaslovu(@PathVariable(name = "posta") int posta, @PathVariable(name = "regija") String regija, @PathVariable(name = "naslov") String naslov){
+        return lokacijaDao.vrniPoPostiInRegijiInNaslovu(posta, regija, naslov);
+    }
+
     @PostMapping
     public Lokacija dodajLokacijo(@RequestBody Lokacija lokacija){
         return lokacijaDao.save(lokacija);

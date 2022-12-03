@@ -48,7 +48,7 @@ public class LokacijaController {
 
     @PutMapping("/{id}") //spreminjanje lokacije
     public Lokacija spremeniLokacijo(@PathVariable(name = "id") Long id, @RequestBody Lokacija lokacija){
-        Lokacija posodobljenaLokacija = lokacijaDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lokacija ne obstaja z id: " + id));
+        Lokacija posodobljenaLokacija = lokacijaDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lokacija z idjem: " + id + " ne obstaja."));
 
         posodobljenaLokacija.setRegija(lokacija.getRegija());
         posodobljenaLokacija.setNaslov(lokacija.getNaslov());

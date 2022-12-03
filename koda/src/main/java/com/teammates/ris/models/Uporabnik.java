@@ -52,6 +52,13 @@ public class Uporabnik {
 	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	Collection<Komentar> komentarji;
 
+	public Collection<Komentar> getKomentarji() {
+		return komentarji;
+	}
+
+	public void setKomentarji(Collection<Komentar> komentarji) {
+		this.komentarji = komentarji;
+	}
 
 	public boolean isAdmin() {
 		return admin;

@@ -33,12 +33,19 @@ public class UporabnikController {
         return uporabnikDao.vrniPoImenuInPriimku(ime, priimek);
     }
 
+
+
     @GetMapping("/ime/{ime}/priimek/{priimek}/email/{email}")
     public Iterable<Uporabnik> vrniPoImenuInPriimkuInEmailu(@PathVariable(name = "ime") String ime, @PathVariable(name = "priimek") String priimek, @PathVariable(name = "email") String email){
         return uporabnikDao.vrniPoImenuInPriimkuInEmailu(ime, priimek, email);
     }
 
-    //naredi se eno poizvedbo s tremi parametri enako kot zgornja
+    @GetMapping("/ime/{ime}/priimek/{priimek}/uporabnisko_ime/{uporabnisko_ime}")
+    public Iterable<Uporabnik> vrniPoImenuInPriimkuInUporabniskemImenu(@PathVariable(name = "ime") String ime, @PathVariable(name = "priimek") String priimek, @PathVariable(name = "uporabnisko_ime") String uporabnisko_ime){
+        return uporabnikDao.vrniPoImenuInPriimkuInUporabniskemImenu(ime, priimek, uporabnisko_ime);
+    }
+
+
 
     @PostMapping
     public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik){
@@ -54,7 +61,7 @@ public class UporabnikController {
     public Uporabnik dodajLokacijo(@PathVariable(name = "id") Long id, @RequestBody Lokacija lokacija){
         Uporabnik posodobljenUporabnik = uporabnikDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Uporabnik ne obstaja z id: " + id));
 
-        posodobljenUporabnik.setLokacija(lokacija);
+        posodobljenUporabnik.setLokacija(posodobljenUporabnik.getLokacija());
 
         return  uporabnikDao.save(posodobljenUporabnik);
     }

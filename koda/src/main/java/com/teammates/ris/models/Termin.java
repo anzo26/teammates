@@ -11,26 +11,26 @@ public class Termin {
     private Long id;
 
 
-    @OneToOne(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    Lokacija lokaciji;
+    //@OneToOne(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //Lokacija lokaciji;
 
     @OneToOne(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Aktivnost aktivnost;
 
 
-    Collection<Komentar> komentar;
-    Collection<Uporabnik> uporabnik;
+    //Collection<Komentar> komentar;
+    //Collection<Uporabnik> uporabnik;
     private String opis;
     private String zacetek;
     private int stevilo_mest;
 
-    public Lokacija getLokaciji() {
+    /*public Lokacija getLokaciji() {
         return lokaciji;
     }
 
     public void setLokaciji(Lokacija lokaciji) {
         this.lokaciji = lokaciji;
-    }
+    }*/
 
 
     public Long getId() {

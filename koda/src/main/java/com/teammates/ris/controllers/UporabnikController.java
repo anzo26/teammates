@@ -45,6 +45,11 @@ public class UporabnikController {
         return uporabnikDao.vrniPoImenuInPriimkuInUporabniskemImenu(ime, priimek, uporabnisko_ime);
     }
 
+    @GetMapping("/ime/{ime}/priimek/{priimek}/komentar/{komentar}")
+    public Iterable<Uporabnik> vrniPoImenuInPriimkuInKomentarju(@PathVariable(name = "ime") String ime, @PathVariable(name = "priimek") String priimek, @PathVariable(name = "komentar") String komentar){
+        return uporabnikDao.vrniPoImenuInPriimkuInKomentarju(ime, priimek, komentar);
+    }
+
 
 
     @PostMapping

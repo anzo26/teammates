@@ -41,6 +41,7 @@ public class LokacijaController {
         return lokacijaDao.save(lokacija);
     }
 
+
     @DeleteMapping("/{id}")
     public void izbrisiLokacijo(@PathVariable(name = "id") Long id){
         lokacijaDao.deleteById(id);

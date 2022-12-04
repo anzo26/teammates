@@ -5,7 +5,6 @@ import com.teammates.ris.dao.UporabnikRepository;
 import com.teammates.ris.dao.KomentarRepository;
 import com.teammates.ris.exceptions.ResourceNotFoundException;
 import com.teammates.ris.models.Komentar;
-import com.teammates.ris.models.Lokacija;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

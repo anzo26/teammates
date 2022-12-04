@@ -40,6 +40,9 @@ public class Uporabnik {
 	@JsonIgnore
 	Lokacija lokacija;
 
+	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	Collection<Komentar> komentarji;
+
 
 	public Lokacija getLokacija() {
 		return lokacija;
@@ -49,8 +52,6 @@ public class Uporabnik {
 		this.lokacija = lokacija;
 	}
 
-	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	Collection<Komentar> komentarji;
 
 	public Collection<Komentar> getKomentarji() {
 		return komentarji;

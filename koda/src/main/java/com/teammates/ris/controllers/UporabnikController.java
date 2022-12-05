@@ -55,12 +55,6 @@ public class UporabnikController {
         return uporabnikDao.vrniPoImenuInPriimkuInKomentarju(ime, priimek, komentar);
     }
 
-
-    @PostMapping
-    public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik){
-        return uporabnikDao.save(uporabnik);
-    }
-
     //dodajanje uporabnika z lokacijo
     @PostMapping("/lokacija/{id}")
     public Optional<Uporabnik> dodajUporabnika(@PathVariable(name = "id") Long id, @RequestBody Uporabnik uporabnik){
@@ -77,11 +71,16 @@ public class UporabnikController {
         uporabnikDao.deleteById(id);
     }
 
-    @PutMapping("/dodajLokacijo/{id}/") //dodajanje lokacije ne dela zaenkrat
-    public Uporabnik dodajLokacijo(@PathVariable(name = "id") Long id, @RequestBody Lokacija lokacija){
+    @PutMapping("/{id}") //spreminjanje uporabnika
+    public Uporabnik spremeniUporabnika(@PathVariable(name = "id") Long id, @RequestBody Uporabnik uporabnik){
         Uporabnik posodobljenUporabnik = uporabnikDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Uporabnik ne obstaja z id: " + id));
 
-        posodobljenUporabnik.setLokacija(posodobljenUporabnik.getLokacija());
+        posodobljenUporabnik.setAdmin(uporabnik.isAdmin());
+        posodobljenUporabnik.setIme(uporabnik.getIme());
+        posodobljenUporabnik.setPriimek(uporabnik.getPriimek());
+        posodobljenUporabnik.setEmail(uporabnik.getEmail());
+        posodobljenUporabnik.setUporabnisko_ime(uporabnik.getUporabnisko_ime());
+        posodobljenUporabnik.setGeslo(uporabnik.getGeslo());
 
         return  uporabnikDao.save(posodobljenUporabnik);
     }

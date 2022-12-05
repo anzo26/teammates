@@ -10,10 +10,10 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     @Query("SELECT u FROM Uporabnik u WHERE u.ime = ?1 AND u.priimek = ?2")
     List<Uporabnik> vrniPoImenuInPriimku(String ime, String priimek);
 
-    @Query("SELECT u FROM Uporabnik u WHERE u.ime = ?1 AND u.priimek = ?2 AND u.email = ?3")
+    @Query("SELECT u FROM Uporabnik u WHERE u.ime LIKE ?1% AND u.priimek LIKE ?2% AND u.email LIKE ?3%")
     List<Uporabnik> vrniPoImenuInPriimkuInEmailu(String ime, String priimek, String email);
 
-    @Query("SELECT u FROM Uporabnik u WHERE u.ime = ?1 AND u.priimek = ?2 AND u.uporabnisko_ime = ?3")
+    @Query("SELECT u FROM Uporabnik u WHERE u.ime LIKE ?1% AND u.priimek LIKE ?2% AND u.uporabnisko_ime LIKE ?3%")
     List<Uporabnik> vrniPoImenuInPriimkuInUporabniskemImenu(String ime, String priimek, String uporabnisko_ime);
 
     @Query("SELECT u FROM Uporabnik u, Komentar k WHERE k.uporabnik = u AND u.ime LIKE ?1 AND u.priimek LIKE ?2 AND k.komentar LIKE %?3%")

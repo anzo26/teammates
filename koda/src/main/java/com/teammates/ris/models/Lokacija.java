@@ -18,6 +18,7 @@ public class Lokacija {
 	@OneToMany(mappedBy = "lokacija", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	Collection<Uporabnik> uporabnik;
 
+
 	public Collection<Uporabnik> getUporabnik() {
 		return uporabnik;
 	}

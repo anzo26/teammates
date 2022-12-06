@@ -45,4 +45,9 @@ public class KomentarController {
 
         return  komentarDao.save(posodobljenKomentar);
     }
+
+    @DeleteMapping("/{id}")
+    public void izbrisiKomentar(@PathVariable(name = "id") Long id){
+        komentarDao.deleteById(id);
+    }
 }

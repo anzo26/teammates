@@ -23,34 +23,4 @@ public class KomentarController {
     public Iterable<Komentar> vrniKomentarje(){
         return komentarDao.findAll();
     }
-
-    @GetMapping("/{id}")
-    public Optional<Komentar> vrniKomentar(@PathVariable(name = "id") Long id){
-        return komentarDao.findById(id);
-    }
-
-
-    //dodajanje komentarja uporabniiku
-    @PostMapping("/uporabnik/{id}")
-    public Optional<Komentar> dodajKomentar(@RequestBody Komentar komentar, @PathVariable(name = "id") Long id){
-        return uporabnikDao.findById(id).map(uporabnik -> {
-            komentar.setUporabnik(uporabnik);
-            return  komentarDao.save(komentar);
-        });
-    }
-
-    @DeleteMapping("/{id}")
-    public void izbrisiKomentar(@PathVariable(name = "id") Long id){
-        komentarDao.deleteById(id);
-    }
-
-    @PutMapping("/{id}") //spreminjanje komentarja
-    public Komentar spremeniKomentar(@PathVariable(name = "id") Long id, @RequestBody Komentar komentar){
-        Komentar posodobljenKomentar = komentarDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Komentar z idjem: " + id + " ne obstaja."));
-
-        posodobljenKomentar.setKomentar(komentar.getKomentar());
-
-        return  komentarDao.save(posodobljenKomentar);
-    }
-
 }

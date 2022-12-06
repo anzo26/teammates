@@ -71,7 +71,7 @@ public class UporabnikController {
         uporabnikDao.deleteById(id);
     }
 
-    @PutMapping("/{id}") //spreminjanje uporabnika
+    @PutMapping("/{id}")
     public Uporabnik spremeniUporabnika(@PathVariable(name = "id") Long id, @RequestBody Uporabnik uporabnik){
         Uporabnik posodobljenUporabnik = uporabnikDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Uporabnik ne obstaja z id: " + id));
 

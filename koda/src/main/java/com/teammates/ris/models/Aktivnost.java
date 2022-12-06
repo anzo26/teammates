@@ -2,6 +2,8 @@ package com.teammates.ris.models;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class Aktivnost {
     @Id
@@ -11,20 +13,16 @@ public class Aktivnost {
     private String naziv;
     private String opis;
 
-    @OneToOne(orphanRemoval = true)
-    @JoinTable(name = "Aktivnost_termin",
-            joinColumns = @JoinColumn(name = "aktivnost_id"),
-            inverseJoinColumns = @JoinColumn(name = "termin_id"))
-    private Termin termin;
+    @OneToMany(mappedBy = "aktivnost", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    Collection<Termin> termin;
 
-    public Termin getTermin() {
+    public Collection<Termin> getTermin() {
         return termin;
     }
 
-    public void setTermin(Termin termin) {
+    public void setTermin(Collection<Termin> termin) {
         this.termin = termin;
     }
-
 
     public Long getId() {
         return id;
@@ -41,4 +39,8 @@ public class Aktivnost {
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
+
+    public String getOpis() { return opis; }
+
+    public void setOpis(String opis) { this.opis = opis; }
 }

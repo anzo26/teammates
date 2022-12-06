@@ -21,17 +21,13 @@ public class Komentar {
 	@JsonIgnore
 	Uporabnik uporabnik;
 
-	public Uporabnik getUporabnik() {
-		return uporabnik;
-	}
+	public Uporabnik getUporabnik() { return uporabnik;}
 
 	public void setUporabnik(Uporabnik uporabnik) {
 		this.uporabnik = uporabnik;
 	}
 
-	public Long getId() {
-		return id;
-	}
+	public Long getId() { return id;}
 
 	public void setId(Long id) {
 		this.id = id;

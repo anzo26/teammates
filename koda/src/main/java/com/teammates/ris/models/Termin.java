@@ -1,6 +1,9 @@
 package com.teammates.ris.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.*;
 
@@ -14,8 +17,21 @@ public class Termin {
     //@OneToOne(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     //Lokacija lokaciji;
 
-    @OneToOne(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_aktivnost")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     Aktivnost aktivnost;
+
+    public Aktivnost getAktivnost() {
+        return aktivnost;
+    }
+
+    public void setAktivnost(Aktivnost aktivnost) {
+        this.aktivnost = aktivnost;
+    }
+// @OneToOne(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //Aktivnost aktivnost;
 
 
     //Collection<Komentar> komentar;

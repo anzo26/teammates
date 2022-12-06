@@ -23,4 +23,5 @@ public class KomentarController {
     public Iterable<Komentar> vrniKomentarje(){
         return komentarDao.findAll();
     }
+    
 }

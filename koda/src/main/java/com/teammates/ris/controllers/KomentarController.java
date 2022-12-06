@@ -23,5 +23,9 @@ public class KomentarController {
     public Iterable<Komentar> vrniKomentarje(){
         return komentarDao.findAll();
     }
-    
+
+    @GetMapping("/{id}")
+    public Optional<Komentar> vrniKomentar(@PathVariable(name = "id") Long id){
+        return komentarDao.findById(id);
+    }
 }

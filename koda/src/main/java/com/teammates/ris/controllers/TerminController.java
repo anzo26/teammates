@@ -33,6 +33,12 @@ public class TerminController {
         return terminDao.findById(id);
     }
 
+    @GetMapping("/opis/{opis}/aktivnost/{naziv}")
+    public Iterable<Termin> vrniTerminPoSteviluIgralcevInAktivnosti(@PathVariable(name = "opis") String opis, @PathVariable(name = "naziv") String naziv){
+        return terminDao.vrniTerminPoSteviluIgralcevInAktivnosti(opis, naziv);
+    }
+
+
     @PostMapping("/aktivnost/{id}")
     public Optional<Termin> dodajTermin(@PathVariable(name = "id") Long id, @RequestBody Termin termin){
         return aktivnostDao.findById(id).map(aktivnost -> {

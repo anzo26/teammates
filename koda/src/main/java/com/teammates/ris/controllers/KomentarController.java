@@ -36,4 +36,13 @@ public class KomentarController {
             return  komentarDao.save(komentar);
         });
     }
+
+    @PutMapping("/{id}")
+    public Komentar spremeniKomentar(@PathVariable(name = "id") Long id, @RequestBody Komentar komentar){
+        Komentar posodobljenKomentar = komentarDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Komentar z idjem: " + id + " ne obstaja."));
+
+        posodobljenKomentar.setKomentar(komentar.getKomentar());
+
+        return  komentarDao.save(posodobljenKomentar);
+    }
 }

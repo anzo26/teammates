@@ -28,4 +28,12 @@ public class KomentarController {
     public Optional<Komentar> vrniKomentar(@PathVariable(name = "id") Long id){
         return komentarDao.findById(id);
     }
+
+    @PostMapping("/uporabnik/{id}")
+    public Optional<Komentar> dodajKomentar(@RequestBody Komentar komentar, @PathVariable(name = "id") Long id){
+        return uporabnikDao.findById(id).map(uporabnik -> {
+            komentar.setUporabnik(uporabnik);
+            return  komentarDao.save(komentar);
+        });
+    }
 }

@@ -41,4 +41,10 @@ public class AktivnostController {
 
         return  aktivnostDao.save(posodobljenaAktivnost);
     }
+
+    @DeleteMapping("/{id}")
+    public void izbrisiAktivnost(@PathVariable(name = "id") Long id){
+        aktivnostDao.deleteById(id);
+    }
+
 }

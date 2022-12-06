@@ -20,6 +20,10 @@ public class AktivnostController {
     public Iterable<Aktivnost> vrniAktivnosti(){
         return aktivnostDao.findAll();
     }
-
+    
+    @GetMapping("/{id}")
+    public Optional<Aktivnost> vrniAktivnost(@PathVariable(name = "id") Long id){
+        return aktivnostDao.findById(id);
+    }
 
 }

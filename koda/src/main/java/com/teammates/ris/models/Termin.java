@@ -26,12 +26,9 @@ public class Termin {
     public Aktivnost getAktivnost() {
         return aktivnost;
     }
-
     public void setAktivnost(Aktivnost aktivnost) {
         this.aktivnost = aktivnost;
     }
-// @OneToOne(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //Aktivnost aktivnost;
 
 
     //Collection<Komentar> komentar;

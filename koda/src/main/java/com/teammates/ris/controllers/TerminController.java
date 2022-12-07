@@ -38,6 +38,11 @@ public class TerminController {
         return terminDao.vrniTerminPoSteviluIgralcevInAktivnosti(opis, naziv);
     }
 
+    @GetMapping("/zacetek/{zacetek}/aktivnost/{naziv}")
+    public Iterable<Termin> vrniTerminPoZacetkuInAktivnosti(@PathVariable(name = "zacetek") String zacetek, @PathVariable(name = "naziv") String naziv){
+        return terminDao.vrniTerminPoZacetkuInAktivnosti(zacetek, naziv);
+    }
+
 
     @PostMapping("/aktivnost/{id}")
     public Optional<Termin> dodajTermin(@PathVariable(name = "id") Long id, @RequestBody Termin termin){

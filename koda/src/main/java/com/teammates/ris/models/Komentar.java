@@ -21,6 +21,20 @@ public class Komentar {
 	@JsonIgnore
 	Uporabnik uporabnik;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_termin")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
+	Termin termin;
+
+	public Termin getTermin() {
+		return termin;
+	}
+
+	public void setTermin(Termin termin) {
+		this.termin = termin;
+	}
+
 	public Uporabnik getUporabnik() { return uporabnik;}
 
 	public void setUporabnik(Uporabnik uporabnik) {

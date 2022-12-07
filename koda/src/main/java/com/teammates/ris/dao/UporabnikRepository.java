@@ -19,6 +19,6 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     @Query("SELECT u FROM Uporabnik u, Lokacija l WHERE u.lokacija = l AND u.ime LIKE ?1% AND u.priimek LIKE ?2% AND l.naslov LIKE ?3%")
     List<Uporabnik> vrniPoImenuInPriimkuInNaslovu(String ime, String priimek, String naslov);
 
-    @Query("SELECT u FROM Uporabnik u, Komentar k WHERE k.uporabnik = u AND u.ime LIKE ?1 AND u.priimek LIKE ?2 AND k.komentar LIKE %?3%")
+    @Query("SELECT u FROM Uporabnik u, Komentar k WHERE k.uporabnik = u AND u.ime LIKE ?1% AND u.priimek LIKE ?2% AND k.komentar LIKE %?3%")
     List<Uporabnik> vrniPoImenuInPriimkuInKomentarju(String ime, String priimek, String komentar);
 }

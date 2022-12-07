@@ -13,15 +13,36 @@ public class Termin {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    //@OneToOne(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //Lokacija lokaciji;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_aktivnost")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     Aktivnost aktivnost;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_lokacija")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    Lokacija lokacija;
+
+    @OneToMany(mappedBy = "termin", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    Collection<Komentar> komentar;
+
+    public Lokacija getLokacija() {
+        return lokacija;
+    }
+
+    public void setLokacija(Lokacija lokacija) {
+        this.lokacija = lokacija;
+    }
+
+    public Collection<Komentar> getKomentar() {
+        return komentar;
+    }
+
+    public void setKomentar(Collection<Komentar> komentar) {
+        this.komentar = komentar;
+    }
 
     public Aktivnost getAktivnost() {
         return aktivnost;

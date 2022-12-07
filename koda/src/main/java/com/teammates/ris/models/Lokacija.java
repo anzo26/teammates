@@ -18,6 +18,16 @@ public class Lokacija {
 	@OneToMany(mappedBy = "lokacija", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	Collection<Uporabnik> uporabnik;
 
+	@OneToMany(mappedBy = "lokacija", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	Collection<Uporabnik> termin;
+
+	public Collection<Uporabnik> getTermin() {
+		return termin;
+	}
+
+	public void setTermin(Collection<Uporabnik> termin) {
+		this.termin = termin;
+	}
 
 	public Collection<Uporabnik> getUporabnik() {
 		return uporabnik;

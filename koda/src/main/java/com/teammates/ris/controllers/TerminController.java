@@ -38,8 +38,8 @@ public class TerminController {
     }
 
     @GetMapping("/opis/{opis}/aktivnost/{naziv}")
-    public Iterable<Termin> vrniTerminPoSteviluIgralcevInAktivnosti(@PathVariable(name = "opis") String opis, @PathVariable(name = "naziv") String naziv){
-        return terminDao.vrniTerminPoSteviluIgralcevInAktivnosti(opis, naziv);
+    public Iterable<Termin> vrniTerminPoOpisuInAktivnosti(@PathVariable(name = "opis") String opis, @PathVariable(name = "naziv") String naziv){
+        return terminDao.vrniTerminPoOpisuInAktivnosti(opis, naziv);
     }
 
     @GetMapping("/zacetek/{zacetek}/aktivnost/{naziv}")

@@ -60,6 +60,11 @@ public class UporabnikController {
         return uporabnikDao.vrniPoImenuInPriimkuInNaslovu(ime, priimek, naslov);
     }
 
+    @GetMapping("/ime/{ime}/komentar/{komentar}/naslov/{naslov}")
+    public Iterable<Uporabnik> vrniPoImenuInKomentarjuInNaslovu(@PathVariable(name = "ime") String ime, @PathVariable(name = "komentar") String komentar, @PathVariable(name = "naslov") String naslov){
+        return uporabnikDao.vrniPoImenuInKomentarjuInNaslovu(ime, komentar, naslov);
+    }
+
     //dodajanje uporabnika z lokacijo
     @PostMapping("/lokacija/{id}")
     public Optional<Uporabnik> dodajUporabnika(@PathVariable(name = "id") Long id, @RequestBody Uporabnik uporabnik){

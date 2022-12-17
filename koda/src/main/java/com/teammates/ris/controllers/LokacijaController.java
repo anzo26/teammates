@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/lokacije")
 public class LokacijaController {
@@ -31,7 +32,7 @@ public class LokacijaController {
         return lokacijaDao.vrniPoPostiInRegiji(posta, regija);
     }
 
-    @GetMapping("/posta/{posta}/regija/{regija}/naslov/{naslov}")
+    @GetMapping("/{naslov}/{regija}/{posta}")
     public Iterable<Lokacija> vrniPoPostiInRegijiInNaslovu(@PathVariable(name = "posta") int posta, @PathVariable(name = "regija") String regija, @PathVariable(name = "naslov") String naslov){
         return lokacijaDao.vrniPoPostiInRegijiInNaslovu(posta, regija, naslov);
     }

@@ -9,16 +9,16 @@ export default function Navbar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Button color="inherit" href="./uporabniki">
+          <Button color="inherit" href="/uporabniki">
             Uporabniki
           </Button>
-          <Button color="inherit" href="./lokacije">
+          <Button color="inherit" href="/lokacije">
             Lokacije
           </Button>
-          <Button color="inherit" href="./termini">
+          <Button color="inherit" href="/termini">
             Termini
           </Button>
-          <Button color="inherit" href="./aktivnosti">
+          <Button color="inherit" href="/aktivnosti">
             Aktivnosti
           </Button>
         </Toolbar>

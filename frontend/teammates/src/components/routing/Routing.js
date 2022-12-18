@@ -10,7 +10,11 @@ import Lokacije from "../Lokacije/Lokacije";
 import LokacijeID from "../Lokacije/LokacijeID";
 import DodajLokacijo from "../Lokacije/DodajLokacijo";
 import Termini from "../Termini/Termini";
-import Aktivnosti from "../Aktivnosti/Aktivnost";
+import TerminiID from "../Termini/TerminiID";
+import DodajTermin from "../Termini/DodajTermin";
+import Aktivnosti from "../Aktivnosti/Aktivnosti";
+import AktivnostiID from "../Aktivnosti/AktivnostiID";
+import DodajAktivnost from "../Aktivnosti/DodajAktivnost";
 import FiltriraneLokacije from "../Lokacije/FiltriraneLokacije";
 
 export default function Routing() {
@@ -28,7 +32,11 @@ export default function Routing() {
         element={<FiltriraneLokacije />}
       />
       <Route path="/termini" element={<Termini />} />
+      <Route path="/termini/dodaj" element={<DodajTermin />} />
+      <Route path="/termini/:IdTermin" element={<TerminiID />} />
       <Route path="/aktivnosti" element={<Aktivnosti />} />
+      <Route path="/aktivnosti/dodaj" element={<DodajAktivnost />} />
+      <Route path="/aktivnosti/:IdAktivnost" element={<AktivnostiID />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

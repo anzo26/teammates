@@ -75,4 +75,14 @@ public class TerminController {
 
         return  terminDao.save(posodobljenTermin);
     }
+
+    @GetMapping("/stevilo_mest/{stevilo_mest}/naslov/{naslov}/aktivnost/{aktivnost}")
+    public Iterable<Termin> vrniTerminPoSteviluMestInNaslovuInAktivnosti(@PathVariable(name = "stevilo_mest") int stevilo_mest, @PathVariable(name = "naslov") String naslov, @PathVariable(name = "aktivnost") String aktivnost){
+        return terminDao.vrniTerminPoSteviluMestInNaslovuInAktivnosti(stevilo_mest, naslov, aktivnost);
+    }
+
+    @GetMapping("/stevilo_mest/{stevilo_mest}/regija/{regija}/aktivnost/{aktivnost}")
+    public Iterable<Termin> vrniTerminPoSteviluMestInRegijiInAktivnosti(@PathVariable(name = "stevilo_mest") int stevilo_mest, @PathVariable(name = "regija") String regija, @PathVariable(name = "aktivnost") String aktivnost){
+        return terminDao.vrniTerminPoSteviluMestInRegijiInAktivnosti(stevilo_mest, regija, aktivnost);
+    }
 }

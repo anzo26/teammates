@@ -4,10 +4,16 @@ package com.teammates.ris.controllers;
 import com.teammates.ris.dao.LokacijaRepository;
 import com.teammates.ris.dao.UporabnikRepository;
 import com.teammates.ris.exceptions.ResourceNotFoundException;
-import com.teammates.ris.models.Lokacija;
 import com.teammates.ris.models.Uporabnik;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.teammates.ris.GeneratePdfReport;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import java.io.ByteArrayInputStream;
+import java.util.List;
 
 import java.util.Optional;
 
@@ -98,6 +104,26 @@ public class UporabnikController {
 
 
 
+    @GetMapping("/ime/{ime}/komentar/{komentar}/regija/{regija}")
+    public Iterable<Uporabnik> vrniPoImenuInKomentarjuInRegiji(@PathVariable(name = "ime") String ime, @PathVariable(name = "komentar") String komentar, @PathVariable(name = "regija") String regija){
+        return uporabnikDao.vrniPoImenuInKomentarjuInRegiji(ime, komentar, regija);
+    }
 
+    @GetMapping("/pdf")
+    public ResponseEntity<InputStreamResource> uporabnikiReport() {
+
+        var uporabniki = (List<Uporabnik>) uporabnikDao.findAll();
+
+        ByteArrayInputStream bis = GeneratePdfReport.uporabnikiReport(uporabniki);
+
+        var headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=uporabnikireport.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+    }
 
 }

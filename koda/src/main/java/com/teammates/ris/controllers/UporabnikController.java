@@ -52,7 +52,7 @@ public class UporabnikController {
         return uporabnikDao.vrniPoImenuInPriimkuInEmailu(ime, priimek, email);
     }
 
-    @GetMapping("/ime/{ime}/priimek/{priimek}/uporabnisko_ime/{uporabnisko_ime}")
+    @GetMapping("/{ime}/{priimek}/{uporabnisko_ime}")
     public Iterable<Uporabnik> vrniPoImenuInPriimkuInUporabniskemImenu(@PathVariable(name = "ime") String ime, @PathVariable(name = "priimek") String priimek, @PathVariable(name = "uporabnisko_ime") String uporabnisko_ime){
         return uporabnikDao.vrniPoImenuInPriimkuInUporabniskemImenu(ime, priimek, uporabnisko_ime);
     }

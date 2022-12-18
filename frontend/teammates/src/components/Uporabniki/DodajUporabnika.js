@@ -12,7 +12,7 @@ const DodajUporabnika = () => {
 
   const dodajUporabnika = () => {
     api
-      .post(`/uporabniki/lokacija/60`, {
+      .post(`/uporabniki/lokacija/2`, {
         ime: ime,
         priimek: priimek,
         email: email,

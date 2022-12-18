@@ -11,7 +11,7 @@ const DodajTermin = () => {
 
   const dodajTermin = () => {
     api
-      .post("/termini/lokacija/60/aktivnost/2", {
+      .post("/termini/lokacija/2/aktivnost/2", {
         opis: opis,
         zacetek: zacetek,
         stevilo_mest: stevilo_mest,

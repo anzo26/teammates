@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import { useParams } from "react-router-dom";
-import { Button} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Delete } from "@mui/icons-material";
 import Table from "@mui/material/Table";
@@ -12,26 +12,27 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const odstraniLokacijo = (id) => {
+
+const odstraniUporabnika = (id) => {
   console.log(id);
-  api.delete(`/lokacije/${id}`);
+  api.delete(`/uporabniki/${id}`);
   window.location.reload();
 };
 
-export default function FiltriraneLokacije() {
-  let { Pnaslov, Pregija, Pposta } = useParams();
-  const [lokacije, setLokacije] = useState([]);
+export default function FiltriraniUporabniki() {
+  let { Pime, Ppriimek, PuporabniskoIme } = useParams();
+  const [uporabniki, setUporabniki] = useState([]);
   let navigate = useNavigate();
 
   useEffect(() => {
-    api.get(`/lokacije/${Pnaslov}/${Pregija}/${Pposta}`).then((result) => {
-      setLokacije(result.data);
+    api.get(`/uporabniki/${Pime}/${Ppriimek}/${PuporabniskoIme}`).then((result) => {
+      setUporabniki(result.data);
     });
   }, []);
 
   return (
     <>
-      <h1>Lokacije</h1>
+      <h1>Uporabniki</h1>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -40,35 +41,39 @@ export default function FiltriraneLokacije() {
                 <strong>Id</strong>
               </TableCell>
               <TableCell align="center">
-                <strong>Naslov</strong>
+                <strong>Ime</strong>
               </TableCell>
               <TableCell align="center">
-                <strong>Regija</strong>
+                <strong>Priimek</strong>
               </TableCell>
               <TableCell align="center">
-                <strong>Pošta</strong>
+                <strong>E-mail</strong>
+              </TableCell>
+              <TableCell align="center">
+                <strong>Uporabniško ime</strong>
               </TableCell>
               <TableCell align="center"></TableCell>
               <TableCell align="center"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {lokacije.map((Lokacija) => (
+            {uporabniki.map((uporabnik) => (
               <TableRow
-                key={Lokacija.id}
+                key={uporabnik.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {Lokacija.id}
+                  {uporabnik.id}
                 </TableCell>
-                <TableCell align="center">{Lokacija.naslov}</TableCell>
-                <TableCell align="center">{Lokacija.regija}</TableCell>
-                <TableCell align="center">{Lokacija.posta}</TableCell>
+                <TableCell align="center">{uporabnik.ime}</TableCell>
+                <TableCell align="center">{uporabnik.priimek}</TableCell>
+                <TableCell align="center">{uporabnik.email}</TableCell>
+                <TableCell align="center">{uporabnik.uporabnisko_ime}</TableCell>
                 <TableCell align="left">
                   {
                     <Button
                       variant="contained"
-                      onClick={() => navigate(`/lokacije/${Lokacija.id}`)}
+                      onClick={() => navigate(`/uporabniki/${uporabnik.id}`)}
                     >
                       Uredi
                     </Button>
@@ -80,7 +85,7 @@ export default function FiltriraneLokacije() {
                       variant="contained"
                       color="error"
                       startIcon={<Delete />}
-                      onClick={() => odstraniLokacijo(Lokacija.id)}
+                      onClick={() => odstraniUporabnika(uporabnik.id)}
                     >
                       Odstrani
                     </Button>
@@ -95,7 +100,7 @@ export default function FiltriraneLokacije() {
         <Button
           variant="contained"
           style={{ margin: "1rem" }}
-          onClick={() => navigate("/lokacije")}
+          onClick={() => navigate("/uporabniki")}
         >
           Nazaj
         </Button>

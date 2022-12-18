@@ -16,6 +16,8 @@ import Aktivnosti from "../Aktivnosti/Aktivnosti";
 import AktivnostiID from "../Aktivnosti/AktivnostiID";
 import DodajAktivnost from "../Aktivnosti/DodajAktivnost";
 import FiltriraneLokacije from "../Lokacije/FiltriraneLokacije";
+import FiltriraniUporabniki from "../Uporabniki/FiltriraniUporabniki";
+
 
 export default function Routing() {
   return (
@@ -24,6 +26,10 @@ export default function Routing() {
       <Route path="/uporabniki" element={<Uporabniki />} />
       <Route path="/uporabniki/dodaj" element={<DodajUporabnika />} />
       <Route path="/uporabniki/:IdUporabnik" element={<UporabnikiID />} />
+      <Route
+        path="/uporabniki/:Pime/:Ppriimek/:PuporabniskoIme"
+        element={<FiltriraniUporabniki />}
+      />
       <Route path="/lokacije" element={<Lokacije />} />
       <Route path="/lokacije/dodaj" element={<DodajLokacijo />} />
       <Route path="/lokacije/:IdLokacija" element={<LokacijeID />} />
